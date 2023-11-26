@@ -1,0 +1,25 @@
+resources:
+  - name: repo_git
+    type: GitRepo
+    configuration:
+      gitProvider: assaf_gh
+      path: assaf-levkovich-jf/appsec-cicd-test
+      buildOn:
+        pullRequestCreate: true
+        commit: false
+
+pipelines:
+  - name: npm_install_pipeline
+    steps:
+      - name: build_on_pr
+        type: Bash
+        configuration:
+          inputResources:
+            - name: repo_git
+          # runtime:
+          #   type: host
+        execution:
+          onExecute:
+            - echo "A pull request has triggered this pipeline"
+            - cd $res_repo_git_resourcePath
+            - npm install ./yofitofi
