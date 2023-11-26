@@ -20,7 +20,7 @@ pipelines:
               values:
                 - "2.tcp.eu.ngrok.io"
                 - "13397"
-              allowCustom: true
+                allowCustom: true
           inputResources:
             - name: repo_git
           # runtime:
