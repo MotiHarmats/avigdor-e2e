@@ -10,14 +10,13 @@ resources:
 
 pipelines:
   - name: npm_install_pipeline
-    configuration:
-      environmentVariables:
-        env: 
-          allowCustom: true
     steps:
       - name: build_on_pr
         type: Bash
         configuration:
+          environmentVariables:
+            env: 
+              allowCustom: true
           inputResources:
             - name: repo_git
           # runtime:
