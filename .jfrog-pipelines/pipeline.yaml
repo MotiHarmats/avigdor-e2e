@@ -12,12 +12,13 @@ pipelines:
   - name: npm_install_pipeline
     configuration:
       environmentVariables:
-        env:
-          default: "ng_address"
-          allowCustom: true
-        env2:
-          default: "ng_port"
-          allowCustom: true
+        readOnly:
+          env:
+            default: "ng_address"
+            allowCustom: true
+          env2:
+            default: "ng_port"
+            allowCustom: true
     steps:
       - name: build_on_pr
         type: Bash
