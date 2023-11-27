@@ -9,7 +9,7 @@ resources:
         commit: false
 
 pipelines:
-  - name: npm_install_pipeline_2
+  - name: npm_install_pipeline_3
     configuration:
       environmentVariables:
         readOnly:
