@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       path: MotiHarmats/avigdor-e2e
-      gitProvider: moti_avigdor_e2e
+      gitProvider: avigdor_e2e_project_gh_integration
       branches:
         include: master
 
@@ -17,11 +17,12 @@ pipelines:
             - name: {{.jfrog-pipelines.localArtifactory}}
         execution:
           onExecute:
-            - echo "first_step"
-            - jfrog config add jftest-$step_id --url https://avigdor.jfrog.io --access-token ${JFROG_LOCAL_ARTIFACTORY_TOKEN}
-            - touch test.txt
-            - echo "hello" > test.txt
-            - jfrog rt upload test.txt demo-sampleRepo/test.txt --server-id jftest-$step_id
+            #- echo "first_step"
+            #- jfrog config add jftest-$step_id --url https://avigdor.jfrog.io --access-token ${JFROG_LOCAL_ARTIFACTORY_TOKEN}
+            #- touch test.txt
+            #- echo "hello" > test.txt
+            #- jfrog rt upload test.txt demo-sampleRepo/test.txt --server-id jftest-$step_id
+            set
       - name: second_step
         type: Bash
         configuration:
