@@ -41,7 +41,7 @@ pipelines:
               - name: myRepo_native
         execution:
             onStart:
-              - echo "Started execution...."
+              - echo "Started execution....."
             onSuccess:
               - echo "Job well done!"
             onFailure:
