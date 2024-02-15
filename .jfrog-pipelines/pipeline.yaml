@@ -2,7 +2,7 @@ resources:
   - name: myRepo_native
     type: GitRepo
     configuration:
-      path: jfrog/jfrog_pipelines
+      path: MotiHarmats/avigdor-e2e
       gitProvider: moti_avigdor_e2e
       branches:
         include: master
