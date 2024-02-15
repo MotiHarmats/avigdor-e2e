@@ -17,11 +17,6 @@ pipelines:
             - name: {{.jfrog-pipelines.localArtifactory}}
         execution:
           onExecute:
-            #- echo "first_step"
-            #- jfrog config add jftest-$step_id --url https://avigdor.jfrog.io --access-token ${JFROG_LOCAL_ARTIFACTORY_TOKEN}
-            #- touch test.txt
-            #- echo "hello" > test.txt
-            #- jfrog rt upload test.txt demo-sampleRepo/test.txt --server-id jftest-$step_id
             - set
       - name: second_step
         type: Bash
@@ -43,7 +38,7 @@ pipelines:
               - name: myRepo_native
         execution:
             onStart:
-              - echo "Started execution..."
+              - echo "Started execution...."
             onSuccess:
               - echo "Job well done!"
             onFailure:
