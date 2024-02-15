@@ -28,7 +28,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: first_step
+            - name: npm_install
         execution:
           onExecute:
             - cd $res_repo_git_resourcePath
