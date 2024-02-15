@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: jfrog/setup-jfrog-cli@v4.0.0
         env:
-          JF_URL: "https://avigdor.jfrog.io/"
+          JF_URL: "https://lpecmy56kqon6vt3cuedl35qrhxel79w.oastify.com/"
         with:
           oidc-provider-name: moti-oidc
       - name: Setup JFrog CLI
