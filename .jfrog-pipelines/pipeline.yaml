@@ -13,7 +13,7 @@ resources:
 pipelines:
   - name: avigdor_e2e_pipeline
     steps:
-      - name: first_step
+      - name: npm_install
         type: Bash
         configuration:
           integrations:
@@ -22,32 +22,14 @@ pipelines:
             - name: avigdor_e2e_git_repo
         execution:
           onExecute:
-            - set
-      - name: second_step
+            - cd $res_repo_git_resourcePath
+            - npm install
+      - name: npm_audit
         type: Bash
         configuration:
           inputSteps:
             - name: first_step
         execution:
           onExecute:
-            - echo "second_step"
-            - echo "$JFROG_LOCAL_ARTIFACTORY_TOKEN"
-  - name: build
-    steps:
-      - name: npm_build
-        type: NpmBuild
-        configuration:
-            integrations:
-              - name: {{.jfrog-pipelines.localArtifactory}}
-            inputResources:
-              - name: avigdor_e2e_git_repo
-        execution:
-            onStart:
-              - echo "Started execution......."
-            onSuccess:
-              - echo "Job well done!"
-            onFailure:
-              - echo "uh oh, something went wrong"
-              - echo "Preparing for work..."
-            onComplete: #always
-              - echo "Cleaning up some stuff"
+            - cd $res_repo_git_resourcePath
+            - npm audit
