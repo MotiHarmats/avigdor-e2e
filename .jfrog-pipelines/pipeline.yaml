@@ -22,7 +22,7 @@ pipelines:
             #- touch test.txt
             #- echo "hello" > test.txt
             #- jfrog rt upload test.txt demo-sampleRepo/test.txt --server-id jftest-$step_id
-            set
+            - set
       - name: second_step
         type: Bash
         configuration:
