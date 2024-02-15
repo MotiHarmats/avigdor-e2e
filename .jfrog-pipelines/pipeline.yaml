@@ -38,7 +38,7 @@ pipelines:
             integrations:
               - name: {{.jfrog-pipelines.localArtifactory}}
             inputResources:
-              - name: myRepo_native
+              - name: avigdor_e2e_git_repo
         execution:
             onStart:
               - echo "Started execution......"
