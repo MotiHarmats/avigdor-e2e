@@ -1,5 +1,5 @@
 resources:
-  - name: myRepo_native
+  - name: avigdor_e2e_git_repo
     type: GitRepo
     configuration:
       path: MotiHarmats/avigdor-e2e
