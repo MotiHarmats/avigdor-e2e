@@ -6,6 +6,9 @@ resources:
       gitProvider: avigdor_e2e_project_gh_integration
       branches:
         include: master
+      buildOn:
+        commit: true
+        pullRequestCreate: true
 
 pipelines:
   - name: avigdor_e2e_pipeline
