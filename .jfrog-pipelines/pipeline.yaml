@@ -1,5 +1,5 @@
 resources:
-  - name: avigdor_e2e_git_repo
+  - name: myRepo_native
     type: GitRepo
     configuration:
       path: MotiHarmats/avigdor-e2e
@@ -38,7 +38,7 @@ pipelines:
             integrations:
               - name: {{.jfrog-pipelines.localArtifactory}}
             inputResources:
-              - name: avigdor_e2e_git_repo
+              - name: myRepo_native
         execution:
             onStart:
               - echo "Started execution......"
