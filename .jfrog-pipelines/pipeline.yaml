@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       path: jfrog/jfrog_pipelines
-      gitProvider: myGithub
+      gitProvider: moti_avigdor_e2e
       branches:
         include: master
 
