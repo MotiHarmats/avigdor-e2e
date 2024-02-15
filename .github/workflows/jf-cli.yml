@@ -45,4 +45,4 @@ jobs:
       - name: Setup JFrog CLI
         run: |
           jf --version
-          js config show            
+          jf config show            
