@@ -41,7 +41,7 @@ pipelines:
               - name: avigdor_e2e_git_repo
         execution:
             onStart:
-              - echo "Started execution......"
+              - echo "Started execution......."
             onSuccess:
               - echo "Job well done!"
             onFailure:
