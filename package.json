@@ -17,7 +17,7 @@
     "weld": "^0.2.2"
   },
   "devDependencies": {
-    "escape-html": "^1.0.3",
+    "escape-html": "^1.0.2",
     "lucene-query-parser": "^1.0.1"
   },
   "author": "Moti Harmats",
