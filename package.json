@@ -14,7 +14,8 @@
     "request": "~2.30.0",
     "skateboard": "^1.5.1",
     "split": "^0.3.0",
-    "weld": "^0.2.2"
+    "weld": "^0.2.2",
+    "express": "^4.16.4"
   },
   "devDependencies": {
     "escape-html": "^1.0.2",
