@@ -42,6 +42,6 @@ jobs:
         run: |
           jf --version
           jf config show
-          docker build . --file Dockerfile --tag avigdor-e2e:$(date +%s)
-          jfrog rt docker-push avigdor-e2e:$(date +%s) moti-avigdor-e2e
+          docker build . --file Dockerfile --tag avigdor-e2e:${{ github.run_id }}
+          jfrog rt docker-push avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
           jfrog rt bp
