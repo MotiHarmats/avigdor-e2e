@@ -15,15 +15,6 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
   moti-jfrog-cli:
     env:
       IMG_NAME: ${{ github.repository }}
@@ -42,6 +33,6 @@ jobs:
         run: |
           jf --version
           jf config show
-          docker build . --file Dockerfile --tag avigdor-e2e:${{ github.run_id }}
-          jfrog rt docker-push avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
+          jfrog docker build . --file Dockerfile --tag avigdor-e2e:${{ github.run_id }}
+          jfrog rt docker-push avigdor-e2e/${{ github.run_id }} moti-avigdor-e2e
           jfrog rt bp
