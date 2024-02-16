@@ -34,5 +34,5 @@ jobs:
           jf --version
           jf config show
           jfrog docker build . --file Dockerfile --tag avigdor-e2e:${{ github.run_id }}
-          jfrog rt docker-push https://avigdor.jfrog.io/artifactory/api/docker/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
+          jfrog rt docker-push avigdor.jfrog.io/artifactory/api/docker/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
           jfrog rt bp
