@@ -33,7 +33,7 @@ jobs:
         run: |
           jf --version
           jf config show
-          jfrog docker build . --file Dockerfile --tag avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }}
+          jfrog docker build . --file Dockerfile --tag avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }} --build-name==moti-unprotected-pipeline
           jfrog rt docker-push avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
-          jfrog rt bp --build-name=moti-unprotected-pipeline --build-number=1
+          jfrog rt build-publish --build-name=moti-unprotected-pipeline  --build-number=1.0.0
 #          jfrog rt bdc workshop-docker-local --image-file image-file-details --build-name $build-name --build-number $build-number
