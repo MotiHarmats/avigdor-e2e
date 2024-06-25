@@ -29,7 +29,7 @@ jobs:
           JF_URL: "https://devreleplus.jfrog.io/"
         with:
           oidc-provider-name: github
-          audience: jfrog-github
+          oidc-audience: jfrog-github
       - name: Setup JFrog CLI
         run: |
           export JFROG_CLI_BUILD_NAME="moti-unprotected-pipeline"
