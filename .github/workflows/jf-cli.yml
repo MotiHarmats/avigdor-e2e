@@ -26,10 +26,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: jfrog/setup-jfrog-cli@v4.0.0
         env:
-          JF_URL: "https://devreleplus.jfrog.io/"
+          JF_URL: "https://avigdor.jfrog.io/"
         with:
-          oidc-provider-name: github
-          oidc-audience: jfrog-github
+          oidc-provider-name: moti-oidc
       - name: Setup JFrog CLI
         run: |
           export JFROG_CLI_BUILD_NAME="moti-unprotected-pipeline"
