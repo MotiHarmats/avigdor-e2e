@@ -34,7 +34,7 @@ jobs:
           oidc-provider-name: moti-oidc
       - name: Setup JFrog CLI
         run: |
-          export JFROG_CLI_BUILD_NAME="moti-unprotected-pipeline"
+          export JFROG_CLI_BUILD_NAME="moti-unprotected-pipeline-testing-harden-runner"
           jf --version
           jf config show
           jfrog docker build . --file Dockerfile --tag avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }}
