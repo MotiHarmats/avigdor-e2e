@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab...
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel...
+jobs:
+  moti-jfrog-cli:
+    env:
+      IMG_NAME: ${{ github.repository }}
+    permissions:
+      id-token: write
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: step-security/harden-runner@446798f8213ac2e75931c1b0769676d927801858 # v2.10.0
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@v4
+      - uses: jfrog/setup-jfrog-cli@v4.0.0
+        env:
+          JF_URL: "https://avigdor.jfrog.io/"
+        with:
+          oidc-provider-name: moti-oidc
+      - name: Setup JFrog CLI
+        run: |
+          export JFROG_CLI_BUILD_NAME="moti-unprotected-pipeline-testing-harden-runner"
+          jf --version
+          jf config show
+          jfrog docker build . --file Dockerfile --tag avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }}
+          jfrog rt docker-push avigdor.jfrog.io/moti-avigdor-e2e/moti-avigdor-e2e:${{ github.run_id }} moti-avigdor-e2e
+          jfrog rt build-publish
+#          jfrog rt bdc workshop-docker-local --image-file image-file-details --build-name $build-name --build-number $build-number
