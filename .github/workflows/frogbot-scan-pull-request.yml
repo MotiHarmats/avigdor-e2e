@@ -13,7 +13,12 @@ jobs:
     # "frogbot" GitHub environment can approve the pull request to be scanned.
     environment: frogbot
     steps:
-      - uses: jfrog/frogbot@v2
+      - name: Harden Runner
+        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        with:
+          egress-policy: audit
+
+      - uses: jfrog/frogbot@1f5619f02d6f18bf39cef42f0e868db554235054 # v2.21.14
         env:
           # [Mandatory]
           # JFrog platform URL
