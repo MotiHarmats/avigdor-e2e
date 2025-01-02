@@ -1,6 +1,6 @@
 - params:
     git:
-      repoName: frogbot
+      repoName: avigdor-e2e
       branches:
         - master
       branchNameTemplate: "this is my branch {BRANCH_NAME_HASH}"
