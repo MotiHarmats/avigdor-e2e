@@ -1,8 +1,8 @@
 - params:
     git:
-      repoName: frogbot
+      repoName: avigdor-e2e
       branches:
-        - master
+        - main
     scan:
       includeAllVulnerabilities: false
       failOnSecurityIssues: false
